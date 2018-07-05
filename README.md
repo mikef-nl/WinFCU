@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="common\logo\Total.png"/>
+  <img src="common\logo\Total.png" alt="Total Productions"/>
 </p>
 
 # WinFCU
