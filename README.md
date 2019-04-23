@@ -7,9 +7,8 @@ WinFCU is a rule based utility which keeps the file system clean by archiving/de
 
 WinFCU can be run interactivly, as a scheduled task or as a service
 
-When installing WinFCU you have 3 options to choose from;
+When installing WinFCU you have 3 options to choose from (Program Files are always installed. These are the WinFCU executable and require DLL Files);
 
-- Program Files are always installed. These are the WinFCU executable and require DLL Files
 - Configuration Files. These are the WinFCU.exe.config and the log4net.config
   Exclude these from installing when you are upgrading WinFCU (aka prevent loosing your current setup)
   Possible required changes to these files will be documented in the release notes
@@ -18,13 +17,19 @@ When installing WinFCU you have 3 options to choose from;
 - Install WinFCU as service. This will do as it says......
 
 Commandline:
+
+```
   .\WinFCU-x64-2.4.15.0.exe                          Installs everything and installs WinFCU as service
   .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="configs"    Installs program files and core configuration files
   .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="examples"   Installs program files and example include files
   .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
+```
 
 You can combine options in a comma separated string
+
+```
   .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
                                                            files and finally install WinFCU as service
+```
 
 Other commandline options can be found at: http://www.jrsoftware.org/ishelp/index.php?topic=runsection
