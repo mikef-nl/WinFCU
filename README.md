@@ -22,7 +22,7 @@ When installing WinFCU you have 3 options to choose from (Program Files are alwa
   cleaning up the Tem, Windows and Users folders on the system drive
 - Install WinFCU as service. This will do as it says......
 
-###Commandline:
+### Commandline:
 
 ```
   .\WinFCU-x64-2.4.15.0.exe                          Installs everything and installs WinFCU as service
