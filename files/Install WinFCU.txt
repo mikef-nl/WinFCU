@@ -1,12 +1,3 @@
-<p align="center">
-  <img src="files\logo\Total.png" alt="Total Productions"/>
-</p>
-
-# WinFCU
-WinFCU is a rule based utility which keeps the file system clean by archiving/deleting/moving unwanted/unneeded files from the file system
-
-WinFCU can be run interactivly, as a scheduled task or as a service
-
 When installing WinFCU you have 3 options to choose from;
 
 - Program Files are always installed. These are the WinFCU executable and require DLL Files
@@ -26,5 +17,6 @@ Commandline:
 You can combine options in a comma separated string
   .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
                                                            files and finally install WinFCU as service
+
 
 Other commandline options can be found at: http://www.jrsoftware.org/ishelp/index.php?topic=runsection
