@@ -7,6 +7,12 @@ WinFCU is a rule based utility which keeps the file system clean by archiving/de
 
 WinFCU can be run interactivly, as a scheduled task or as a service
 
+## Inno Setup
+
+The WinFCU-x64-2.4.15.0.exe installer is created using "Inno Setup Compiler" v5.6.1(a)
+
+## Installing WinFCU
+
 When installing WinFCU you have 3 options to choose from (Program Files are always installed. These are the WinFCU executable and require DLL Files);
 
 - Configuration Files. These are the WinFCU.exe.config and the log4net.config
@@ -16,7 +22,7 @@ When installing WinFCU you have 3 options to choose from (Program Files are alwa
   cleaning up the Tem, Windows and Users folders on the system drive
 - Install WinFCU as service. This will do as it says......
 
-Commandline:
+###Commandline:
 
 ```
   .\WinFCU-x64-2.4.15.0.exe                          Installs everything and installs WinFCU as service
