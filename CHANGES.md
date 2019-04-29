@@ -16,3 +16,7 @@ WinFCU.exe now has a '-show keywords' option which will show all default, applic
   `<includeFiles>` is now a multi element XML node (aka multiple `<path=.... />` elements can be provided)  
   `<keyWords>` elements now have next to the key and value attributes a description attribute (see 'purpose' above)  
 
+## 2.4.16.0
+
+Fixed a bug with reloading schedules
+Added some example data to the WinFCU.exe.config file

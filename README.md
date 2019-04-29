@@ -9,7 +9,7 @@ WinFCU can be run interactivly, as a scheduled task or as a service
 
 ## Inno Setup
 
-The WinFCU-x64-2.4.15.0.exe installer is created using "Inno Setup" v6.0.2
+The WinFCU-x64 installer is created using "Inno Setup" v6.0.2
 
 ## Installing WinFCU
 
@@ -25,16 +25,16 @@ When installing WinFCU you have 3 options to choose from (Program Files are alwa
 ### Commandline options
 
 ```
-  .\WinFCU-x64-2.4.15.0.exe                          Installs everything and installs WinFCU as service
-  .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="configs"    Installs program files and core configuration files
-  .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="examples"   Installs program files and example include files
-  .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
+  .\WinFCU-x64-<version>.exe                          Installs everything and installs WinFCU as service
+  .\WinFCU-x64-<version>.exe /COMPONENTS="configs"    Installs program files and core configuration files
+  .\WinFCU-x64-<version>.exe /COMPONENTS="examples"   Installs program files and example include files
+  .\WinFCU-x64-<version>.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
 ```
 
 You can combine components in a comma separated string
 
 ```
-  .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
+  .\WinFCU-x64-<version>.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
                                                            files and finally install WinFCU as service
 ```
 
