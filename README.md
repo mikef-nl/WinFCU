@@ -9,7 +9,7 @@ WinFCU can be run interactivly, as a scheduled task or as a service
 
 ## Inno Setup
 
-The WinFCU-x64-2.4.15.0.exe installer is created using "Inno Setup Compiler" v5.6.1(a)
+The WinFCU-x64-2.4.15.0.exe installer is created using "Inno Setup" v6.0.2
 
 ## Installing WinFCU
 
@@ -18,11 +18,11 @@ When installing WinFCU you have 3 options to choose from (Program Files are alwa
 - Configuration Files. These are the WinFCU.exe.config and the log4net.config
   Exclude these from installing when you are upgrading WinFCU (aka prevent loosing your current setup)
   Possible required changes to these files will be documented in the release notes
-- Example Files. 3 example files can be installed in the WinFCU folder. These files form a solid base of
-  cleaning up the Tem, Windows and Users folders on the system drive
+- Example Files. 3 example files can be installed in the WinFCU include folder. These files form a solid base of
+  cleaning up the Temp, Windows and Users folders on the system drive
 - Install WinFCU as service. This will do as it says......
 
-### Commandline:
+### Commandline options
 
 ```
   .\WinFCU-x64-2.4.15.0.exe                          Installs everything and installs WinFCU as service
@@ -31,11 +31,11 @@ When installing WinFCU you have 3 options to choose from (Program Files are alwa
   .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
 ```
 
-You can combine options in a comma separated string
+You can combine components in a comma separated string
 
 ```
   .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
                                                            files and finally install WinFCU as service
 ```
 
-Other commandline options can be found at: http://www.jrsoftware.org/ishelp/index.php?topic=runsection
+Other commandline options can be found at: <http://www.jrsoftware.org/ishelp/index.php?topic=runsection>
