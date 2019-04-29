@@ -38,4 +38,4 @@ You can combine components in a comma separated string
                                                            files and finally install WinFCU as service
 ```
 
-Other commandline options can be found at: <http://www.jrsoftware.org/ishelp/index.php?topic=runsection>
+Other commandline options can be found at: <http://www.jrsoftware.org/ishelp/topic_setupcmdline.htm>
