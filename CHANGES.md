@@ -18,5 +18,5 @@ WinFCU.exe now has a '-show keywords' option which will show all default, applic
 
 ## 2.4.16.0
 
-Fixed a bug with reloading schedules
+Fixed a bug with reloading schedules  
 Added some example data to the WinFCU.exe.config file
