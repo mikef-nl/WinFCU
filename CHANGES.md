@@ -20,3 +20,8 @@ WinFCU.exe now has a '-show keywords' option which will show all default, applic
 
 Fixed a bug with reloading schedules  
 Added some example data to the WinFCU.exe.config file
+
+## 2.4.16.1
+
+Fixed '-show keywords' output formatting  
+Stripped version from installer filename
