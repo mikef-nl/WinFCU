@@ -25,3 +25,4 @@ Added some example data to the WinFCU.exe.config file
 
 Fixed '-show keywords' output formatting  
 Stripped version from installer filename
+Fixed LogFiles folder spec in example file
