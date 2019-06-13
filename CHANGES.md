@@ -19,14 +19,20 @@ WinFCU.exe now has a '-show keywords' option which will show all default, applic
 ## 2.4.16.0
 
 Fixed a bug with reloading schedules  
-Added some example data to the WinFCU.exe.config file
+Added some example data to the WinFCU.exe.config file  
 
 ## 2.4.16.1
 
-Fixed '-show keywords' output formatting  
+Fixed `-show keywords` output formatting  
 Stripped version from installer filename  
-Fixed LogFiles folder spec in example file
+Fixed LogFiles folder spec in example file  
 
 ## 2.4.16.2
 
 Clear total counts before a run starts  
+
+## 2.4.17.2
+
+Made exclude into a inherritable default attribute  
+Installer can install basic include files  
+Fix `-show status` output (added default exclude status)  
