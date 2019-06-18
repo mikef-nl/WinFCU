@@ -31,8 +31,9 @@ Fixed LogFiles folder spec in example file
 
 Clear total counts before a run starts  
 
-## 2.4.17.2
+## 2.4.17.x
 
 Made exclude into a inherritable default attribute  
 Installer can install basic include files  
 Fix `-show status` output (added default exclude status)  
+Fix error in counting deleted bytes  

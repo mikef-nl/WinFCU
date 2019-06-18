@@ -27,7 +27,7 @@ When installing WinFCU you have 3 options to choose from (Program Files are alwa
 ```
   .\WinFCU-x64-<version>.exe                          Installs everything and installs WinFCU as service
   .\WinFCU-x64-<version>.exe /COMPONENTS="configs"    Installs program files and core configuration files
-  .\WinFCU-x64-<version>.exe /COMPONENTS="examples"   Installs program files and example include files
+  .\WinFCU-x64-<version>.exe /COMPONENTS="includes"   Installs program files and example include files
   .\WinFCU-x64-<version>.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
 ```
 
@@ -39,3 +39,31 @@ You can combine components in a comma separated string
 ```
 
 Other commandline options can be found at: <http://www.jrsoftware.org/ishelp/topic_setupcmdline.htm>
+
+## Repo content
+
+All mentioned files are part of the WinFCU installer and can be istalled as such
+
+#### baseconfigs
+
+2 base configuration files are supplied/needed;
+
+- the WinFCU.exe.config which contains various default and runtime attributes, and also the cleanup directives for the WinFCU logs
+- the log4net.config (if not provided, WinFCU will use hardcoded log4net settings)
+
+#### includes
+
+The includes folder contains 3 'example' configuration files for cleaning up specific parts of the Windows filesystem  
+These files are 'ready-to-use' and can be installed by selecting 'Include Files" from the installer (or using /COMPONENTS="includes" on the command line)  
+
+#### library
+
+This folder contains the 3 DLL files which are used to build this version of WinFCU
+
+#### logo
+
+Contains the Total.Productions logo file in .png format  
+
+#### program
+
+The WinFCU executable  
