@@ -25,17 +25,17 @@ When installing WinFCU you have 3 options to choose from (Program Files are alwa
 ### Commandline options
 
 ```
-  .\WinFCU-x64-<version>.exe                          Installs everything and installs WinFCU as service
-  .\WinFCU-x64-<version>.exe /COMPONENTS="configs"    Installs program files and core configuration files
-  .\WinFCU-x64-<version>.exe /COMPONENTS="includes"   Installs program files and example include files
-  .\WinFCU-x64-<version>.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
+  .\WinFCU-x64-Setup_<version>.exe                          Installs everything and installs WinFCU as service
+  .\WinFCU-x64-Setup_<version>.exe /COMPONENTS="configs"    Installs program files and core configuration files
+  .\WinFCU-x64-Setup_<version>.exe /COMPONENTS="includes"   Installs program files and example include files
+  .\WinFCU-x64-Setup_<version>.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
 ```
 
 You can combine components in a comma separated string
 
 ```
-  .\WinFCU-x64-<version>.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
-                                                           files and finally install WinFCU as service
+  .\WinFCU-x64-Setup_<version>.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
+                                                                  files and finally install WinFCU as service
 ```
 
 Other commandline options can be found at: <http://www.jrsoftware.org/ishelp/topic_setupcmdline.htm>
@@ -58,15 +58,15 @@ These files are 'ready-to-use' and can be installed by selecting 'Include Files"
 
 #### library
 
-This folder contains the 3 DLL files which are used to build this version of WinFCU
+This folder contains the latest WinFCU images and the 3 DLL files used to build this version of WinFCU
 
 #### logo
 
 Contains the Total.Productions logo file in .png format  
 
-#### program
+#### installer
 
-The WinFCU executable  
+The WinFCU installer. Multiple installer versions can be found there including the Installer-Hash.txt file which contains the file hash values of the various versions
 
 ## Sources
 
