@@ -38,3 +38,4 @@ Installer can install basic include files
 Fix `-show status` output (added default exclude status)  
 Fix error in counting deleted bytes  
 Fix PathTooLong breaking error, fullname of offerender is logged  
+Fix typos in config files
