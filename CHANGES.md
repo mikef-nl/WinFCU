@@ -39,3 +39,8 @@ Fix `-show status` output (added default exclude status)
 Fix error in counting deleted bytes  
 Fix PathTooLong breaking error, fullname of offerender is logged  
 Fix typos in config files
+
+## 2.4.18.x
+
+Code refactoring, eliminating obsolete pieces  
+Service handling improved, now also start, stop, restart and status (requires elevation!)
