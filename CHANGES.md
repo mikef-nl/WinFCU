@@ -55,5 +55,5 @@ More code refactoring
 For include file changes see `WinFCU_SharePoint.config` example file (only in repo, not part of the installer!)  
   
 Installer changes  
-- The installer no longer crete a StartMenu item  
+- The installer no longer creates a StartMenu item  
 - The installer now uses sc.exe to create/delete/start/stop the WinFCU service  
