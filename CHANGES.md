@@ -47,9 +47,11 @@ Service handling improved, now also start, stop, restart and status (requires el
 
 ## 2.4.19.x
 
-More code refactoring
-Include file can have a system element in the `<applicationSettings>` limiting the inclusion to matching systems only `<applicationSettings system="^myserver-[abc]$" >`
-Include file can contain keyword and schedule definitions, limiting these items to matching systems only
-`-show status` will show all include files found, but marks unused files with e preceeding '*'
-
-For include file changes see `WinFCU_SharePoint.config` example file (not part of the installer!)
+More code refactoring  
+Include file can have a system element in the `<applicationSettings>` limiting the inclusion to matching systems only `<applicationSettings system="^myserver-[abc]$" >`  
+Include file can contain keyword and schedule definitions, limiting these items to matching systems only `-show status` will show all include files found, but marks unused files with a preceeding '*'  
+  
+For include file changes see `WinFCU_SharePoint.config` example file (only in repo, not part of the installer!)  
+  
+Installer no longer crete a StartMenu item  
+Installer now uses sc.exe to create/delete/start/stop the WinFCU service  
