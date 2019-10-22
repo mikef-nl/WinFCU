@@ -57,3 +57,6 @@ For include file changes see `WinFCU_SharePoint.config` example file (only in re
 Installer changes  
 - The installer no longer creates a StartMenu item  
 - The installer now uses sc.exe to create/delete/start/stop the WinFCU service  
+
+Bug Fix  
+- Collecting file information could generate an uncatched IOException
