@@ -59,4 +59,7 @@ Installer changes
 - The installer now uses sc.exe to create/delete/start/stop the WinFCU service  
 
 Bug Fix  
-- Collecting file information could generate an uncatched IOException
+- Collecting file information could generate an uncatched IOException  
+
+New functionality  
+- Added LongPathsEnabled detection, issue a warning when not enabled  
