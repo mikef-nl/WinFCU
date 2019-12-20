@@ -64,3 +64,8 @@ Bug Fix
 
 New functionality  
 - Added LongPathsEnabled detection, issue a warning when not enabled  
+
+## 2.4.20.2
+
+New functionality  
+- A schedule can be strict or not (strict=[true/false]). A non-strict schedule will add a delta (based on the system mac address) to the startime. This will allow for distribution of load when running in an environment with multiple servers and shared storage.  
