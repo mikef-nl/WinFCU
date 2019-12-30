@@ -70,5 +70,9 @@ New functionality
 New functionality  
 - A schedule can be strict or not (strict=[true/false]). A non-strict schedule will add a delta (based on the system mac address) to the startime. This will allow for distribution of load when running in an environment with multiple servers and shared storage.  
 
+Config change  
+- Change start time of Sharepoint to 00:30 to avoid collision with non-strict daily schedule  
+
 Bug Fix
-- GetMacAddress could return an empty string, when no mac address is found a dummy will be returned
+- GetMacAddress could return an empty string, when no mac address is found 00-00-00-00-00-00 will be returned
+- Fix int32 conversion of hex parts of mac address  
