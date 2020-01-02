@@ -72,7 +72,8 @@ New functionality
 
 Config change  
 - Change start time of Sharepoint to 00:30 to avoid collision with non-strict daily schedule  
+- Update to WinFCU.exe.config to enable LongPaths support with .Net 4.5
 
 Bug Fix
 - GetMacAddress could return an empty string, when no mac address is found 00-00-00-00-00-00 will be returned
-- Fix int32 conversion of hex parts of mac address  
+- Fix int32 conversion of hex parts of mac address
