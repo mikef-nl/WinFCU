@@ -77,3 +77,4 @@ Config change
 Bug Fix
 - GetMacAddress could return an empty string, when no mac address is found 00-00-00-00-00-00 will be returned
 - Fix int32 conversion of hex parts of mac address
+- Wait 5 seconds with reloading configs after config change  
