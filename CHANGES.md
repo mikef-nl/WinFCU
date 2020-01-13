@@ -68,7 +68,7 @@ New functionality
 ## 2.4.20.x
 
 New functionality  
-- A schedule can be strict or not (strict=[true/false]). A non-strict schedule will add a delta (based on the system mac address) to the startime. This will allow for distribution of load when running in an environment with multiple servers and shared storage.  
+- A schedule can be strict or not (strict=[true/false]). A non-strict schedule will add a delta (based on (one of) the system mac address(es)) to the startime. This will allow for distribution of load when running in an environment with multiple servers and shared storage. The delta can vary from 0 minutes (Mac = 00-00-00-00-00-00) to 51 minutes (Mac = FF-FF-FF-FF-FF-FF)  
 
 Config change  
 - Change start time of Sharepoint to 00:30 to avoid collision with non-strict daily schedule  
