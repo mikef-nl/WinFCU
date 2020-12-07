@@ -78,3 +78,9 @@ Bug Fix
 - GetMacAddress could return an empty string, when no mac address is found 00-00-00-00-00-00 will be returned
 - Fix int32 conversion of hex parts of mac address
 - Wait 5 seconds with reloading configs after config change  
+
+## 2.4.20.8
+
+Config Change  
+- Added user keyword `@Yesterday@` - Yesterdays date in `yyyyMMdd` format (can be used with log rotate actions)
+- Added recovery settings to de service (restart 2 minutes after failing)
