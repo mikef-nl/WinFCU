@@ -84,3 +84,8 @@ Bug Fix
 Config Change  
 - Added user keyword `@Yesterday@` - Yesterdays date in `yyyyMMdd` format (can be used with log rotate actions)
 - Added recovery settings to de service (restart 2 minutes after failing)
+
+## 2.4.21.0
+
+Bug fix
+- Fixed 'Stream was too long' error in archiver fucntion
