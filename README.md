@@ -9,7 +9,7 @@ WinFCU can be run interactivly, as a scheduled task or as a service
 
 ## Inno Setup
 
-The WinFCU-x64 installer is created using "Inno Setup" v6.0.2
+The WinFCU-x64 installer is created using "Inno Setup" v6.2.0
 
 ## Installing WinFCU
 
