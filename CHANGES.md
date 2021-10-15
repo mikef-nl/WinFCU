@@ -89,3 +89,10 @@ Config Change
 
 Bug fix
 - Fixed 'Stream was too long' error in archiver fucntion
+
+## 2.4.25.1
+
+New functionality  
+- WinFCU by default follows symbolic links thereby processing everything it finds in its path.  
+  This behaviour can now be managed using `followsymlimks=[true|false]`. This is an inherritable option and it can be used at any level (folders, folder, files)
+  The default behaviour is still to follow symlinks (`followSymlinks="true"`)  
