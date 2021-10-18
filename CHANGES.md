@@ -90,7 +90,7 @@ Config Change
 Bug fix
 - Fixed 'Stream was too long' error in archiver fucntion
 
-## 2.4.25.1
+## 2.4.25.2
 
 New functionality  
 - WinFCU by default follows symbolic links thereby processing everything it finds in its path.  
