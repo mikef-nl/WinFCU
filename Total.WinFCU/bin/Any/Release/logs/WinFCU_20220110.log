@@ -1,0 +1,81 @@
+2022-01-10 10:15:52 - 1 - ERROR - Invalid attribute "description" found in <add path="C:\DoNotClean" description="Example of restricted path" />
+2022-01-10 10:15:52 - 1 - INFO  - ============================ W I N F C U - 2.5.0.2 =============================
+2022-01-10 10:15:52 - 1 - INFO  - Starting Filesystem Cleanup for schedule #ALL#
+2022-01-10 10:15:52 - 1 - INFO  - --------------------------------------------------------------------------------
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: D:\Visual Studio\Projects\Total.WinFCU 2.5\Total.WinFCU\bin\Any\Release\logs for: *.log
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: D:\Visual Studio\Projects\Total.WinFCU 2.5\Total.WinFCU\bin\Any\Release\logs for: WinFCU_*.zip
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in D:\Visual Studio\Projects\Total.WinFCU 2.5\Total.WinFCU\bin\Any\Release\logs
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Users\Default\AppData\Local\Temp for: *
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Users\Default User\AppData\Local\Temp for: *
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Users\hvanveen\AppData\Local\Temp for: *
+2022-01-10 10:15:52 - 1 - INFO  -  [DRYRUN] - would have deleted 0 bytes in folder C:\Users\hvanveen\AppData\Local\Temp
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Users\hvanveen\AppData\LocalLow\Temp for: *
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Users\hvanveen\AppData\LocalLow\Temp
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Users\hvanveen\AppData\Local\Microsoft\Windows\WebCache for: *
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Users\hvanveen\AppData\Local\Microsoft\Windows\WebCache
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Users\hvanveen\AppData\Local\CrashDumps for: *
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Users\hvanveen\AppData\Local\CrashDumps
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Tmp for: *
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Tmp
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Tmp
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Tmp
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\ProgramData\Microsoft\Windows\WER\ReportQueue for: *
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\ProgramData\Microsoft\Windows\WER\ReportQueue
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Windows\system32\LogFiles for: *
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Windows\system32\LogFiles
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Windows\Logs for: *
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Windows\Logs
+2022-01-10 10:15:52 - 1 - INFO  - Scanning path: C:\Windows\Temp for: *
+2022-01-10 10:15:52 - 1 - INFO  -  [DRYRUN] - would have deleted 0 bytes in folder C:\Windows\Temp
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Windows\Temp
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Windows\Temp
+2022-01-10 10:15:52 - 1 - INFO  - Checking for WinFCU special actions
+2022-01-10 10:15:52 - 1 - INFO  - Processing WinFCU Special: WindowsInstaller
+2022-01-10 10:15:52 - 1 - INFO  -  [DRYRUN] - would have deleted 0 bytes in folder C:\Windows\Installer
+2022-01-10 10:15:52 - 1 - INFO  - Removing empty folders in C:\Windows\Installer
+2022-01-10 10:15:52 - 1 - INFO  - --------------------------------------------------------------------------------
+2022-01-10 10:15:52 - 1 - INFO  -  [DRYRUN] - Total bytes deleted  : 0
+2022-01-10 10:15:52 - 1 - INFO  -  [DRYRUN] - Total bytes archived : 0
+2022-01-10 10:15:52 - 1 - INFO  -  [DRYRUN] - Total bytes moved    : 0
+2022-01-10 10:15:52 - 1 - INFO  -  [DRYRUN] - Total bytes compacted: 0
+2022-01-10 10:15:52 - 1 - INFO  - --------------------------------------------------------------------------------
+2022-01-10 10:16:57 - 1 - INFO  - ============================ W I N F C U - 2.5.0.2 =============================
+2022-01-10 10:16:57 - 1 - INFO  - Starting Filesystem Cleanup for schedule #ALL#
+2022-01-10 10:16:57 - 1 - INFO  - --------------------------------------------------------------------------------
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: D:\Visual Studio\Projects\Total.WinFCU 2.5\Total.WinFCU\bin\Any\Release\logs for: *.log
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: D:\Visual Studio\Projects\Total.WinFCU 2.5\Total.WinFCU\bin\Any\Release\logs for: WinFCU_*.zip
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in D:\Visual Studio\Projects\Total.WinFCU 2.5\Total.WinFCU\bin\Any\Release\logs
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Users\Default\AppData\Local\Temp for: *
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Users\Default User\AppData\Local\Temp for: *
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Users\hvanveen\AppData\Local\Temp for: *
+2022-01-10 10:16:57 - 1 - INFO  -  [DRYRUN] - would have deleted 0 bytes in folder C:\Users\hvanveen\AppData\Local\Temp
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Users\hvanveen\AppData\LocalLow\Temp for: *
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Users\hvanveen\AppData\LocalLow\Temp
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Users\hvanveen\AppData\Local\Microsoft\Windows\WebCache for: *
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Users\hvanveen\AppData\Local\Microsoft\Windows\WebCache
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Users\hvanveen\AppData\Local\CrashDumps for: *
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Users\hvanveen\AppData\Local\CrashDumps
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Tmp for: *
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Tmp
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Tmp
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Tmp
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\ProgramData\Microsoft\Windows\WER\ReportQueue for: *
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\ProgramData\Microsoft\Windows\WER\ReportQueue
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Windows\system32\LogFiles for: *
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Windows\system32\LogFiles
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Windows\Logs for: *
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Windows\Logs
+2022-01-10 10:16:57 - 1 - INFO  - Scanning path: C:\Windows\Temp for: *
+2022-01-10 10:16:57 - 1 - INFO  -  [DRYRUN] - would have deleted 0 bytes in folder C:\Windows\Temp
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Windows\Temp
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Windows\Temp
+2022-01-10 10:16:57 - 1 - INFO  - Checking for WinFCU special actions
+2022-01-10 10:16:57 - 1 - INFO  - Processing WinFCU Special: WindowsInstaller
+2022-01-10 10:16:57 - 1 - INFO  -  [DRYRUN] - would have deleted 0 bytes in folder C:\Windows\Installer
+2022-01-10 10:16:57 - 1 - INFO  - Removing empty folders in C:\Windows\Installer
+2022-01-10 10:16:57 - 1 - INFO  - --------------------------------------------------------------------------------
+2022-01-10 10:16:57 - 1 - INFO  -  [DRYRUN] - Total bytes deleted  : 0
+2022-01-10 10:16:57 - 1 - INFO  -  [DRYRUN] - Total bytes archived : 0
+2022-01-10 10:16:57 - 1 - INFO  -  [DRYRUN] - Total bytes moved    : 0
+2022-01-10 10:16:57 - 1 - INFO  -  [DRYRUN] - Total bytes compacted: 0
+2022-01-10 10:16:57 - 1 - INFO  - --------------------------------------------------------------------------------

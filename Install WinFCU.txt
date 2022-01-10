@@ -9,13 +9,13 @@ When installing WinFCU you have 3 options to choose from;
 - Install WinFCU as service. This will do as it says......
 
 Commandline:
-  .\WinFCU-x64-2.4.15.0.exe                          Installs everything and installs WinFCU as service
-  .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="configs"    Installs program files and core configuration files
-  .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="examples"   Installs program files and example include files
-  .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
+  .\WinFCU-x64-`version`.exe                          Installs everything and installs WinFCU as service
+  .\WinFCU-x64-`version`.exe /COMPONENTS="configs"    Installs program files and core configuration files
+  .\WinFCU-x64-`version`.exe /COMPONENTS="examples"   Installs program files and example include files
+  .\WinFCU-x64-`version`.exe /COMPONENTS="service"    Installs program files and installs WinFCU as service
 
 You can combine options in a comma separated string
-  .\WinFCU-x64-2.4.15.0.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
+  .\WinFCU-x64-`version`.exe /COMPONENTS="configs,service"  Will installs program files and core configuration
                                                            files and finally install WinFCU as service
 
 

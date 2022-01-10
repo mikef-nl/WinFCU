@@ -7,12 +7,7 @@ WinFCU is a rule based utility which keeps the file system clean by archiving/de
 
 WinFCU can be run interactivly, as a scheduled task or as a service
 
-## V2.4.15.0
+## V2.5.0.3
 
-Replacement keyword handling has been rewritten. Purpose is to create auto-documentation of the keywords.
-WinFCU.exe now has a '-show keywords' option which will show all default, application and user defined keywords including a description and value example per keyword.
-
-- Changes to WinFCU.exe.config  
-  `<includeFiles>` is now a multi element XML node (aka multiple `<path=.... />` elements can be provided)  
-  `<keyWords>` elements now have next to the key and value attributes a description attribute (see 'purpose' above)  
+The complete Visual Studio solution is now published to Git, so enjoy!  
 
