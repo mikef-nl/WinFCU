@@ -66,9 +66,11 @@ namespace Total.WinFCU
             foreach (string spcName in specialActions.Keys)
             {
                 specialsInfo siObject = specialActions[spcName];
-                total.Logger.Debug(String.Format("Verifying special: {0} ({1}/{2}/{3})", spcName, siObject.enabled, siObject.systemOk, siObject.schedule));
-                if (!siObject.enabled) { continue; }
-                if (scheduleName != "#ALL#" && scheduleName != siObject.schedule) { continue; }
+                string saSchedule = siObject.schedule;
+                total.Logger.Debug(String.Format("Verifying special: {0} ({1}/{2}/{3})", spcName, siObject.enabled, siObject.systemOk, saSchedule));
+                if (String.IsNullOrEmpty(saSchedule)) { saSchedule = scheduleName; }
+                if (!siObject.enabled) { total.Logger.Debug("Special disabled, skipping: " + spcName); continue; }
+                if (scheduleName != saSchedule) { total.Logger.Debug("Schedule mismatch, skipping: " + spcName); continue; }
                 total.Logger.Info("Processing WinFCU Special: " + spcName);
                 switch (spcName)
                 {
