@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using Total.Util;
 
 namespace Total.WinFCU
@@ -37,8 +33,8 @@ namespace Total.WinFCU
             siObject.description = "Remove obsolete packages from the Windows Installer folder";
             specialActions.Add("WindowsInstaller", siObject);
             // RecycleBins
-            // siObject.description = "Clear Recycle Bins on all drives";
-            // specialActions.Add("RecycleBins", siObject);
+            siObject.description = "Clear Recycle Bins on all drives";
+            specialActions.Add("RecycleBins", siObject);
         }
 
         // --------------------------------------------------------------------------------------------------------------------
@@ -80,31 +76,6 @@ namespace Total.WinFCU
 
             }
         }
-
         // --------------------------------------------------------------------------------------------------------------------
-        //  WinFCU clean the windows installer folder from obsolete files and folders
-        // --------------------------------------------------------------------------------------------------------------------
-        public static void cleanWindowsInstaller()
-        {
-            // Specify the standard Windows Installer cache folder
-            INF.filePath = Path.Combine(Environment.GetEnvironmentVariable("WINDIR"), "Installer");
-
-            // Get the list of obsolete installer files and remove them from the system
-            List<FileInfo> obsoleteFiles = getObsoleteWindowsInstallerFiles(INF.filePath);
-            // zero counters before deleting the files
-            ZeroFolderCounters();
-            fcu.DeleteFilesInList(obsoleteFiles);
-
-            // Once the files are removed, cleanup the empty folders
-            fcu.DeleteEmptyFolders(INF.filePath, new Regex(@".*\\\$PatchCache\$\\.*"), false, SearchOption.AllDirectories);
-        }
-
-        // --------------------------------------------------------------------------------------------------------------------
-        //  WinFCU clean the windows recycle bins
-        // --------------------------------------------------------------------------------------------------------------------
-        public static void cleanRecycleBins()
-        {
-
-        }
     }
 }
