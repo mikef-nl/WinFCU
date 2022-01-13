@@ -91,6 +91,8 @@ namespace Total.WinFCU
 
             // Get the list of obsolete installer files and remove them from the system
             List<FileInfo> obsoleteFiles = getObsoleteWindowsInstallerFiles(INF.filePath);
+            // zero counters before deleting the files
+            ZeroFolderCounters();
             fcu.DeleteFilesInList(obsoleteFiles);
 
             // Once the files are removed, cleanup the empty folders

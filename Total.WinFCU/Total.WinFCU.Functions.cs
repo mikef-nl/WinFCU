@@ -99,7 +99,7 @@ namespace Total.WinFCU
         }
 
         // ------------------------------------------------------------------------------------------------------------------------
-        //   Reset all the total counter values
+        //   Reset all the total and folder counter values
         // ------------------------------------------------------------------------------------------------------------------------
         public static void ZeroTotalCounters()
         {
@@ -110,6 +110,17 @@ namespace Total.WinFCU
             total_bytesArchived = 0;
             total_bytesDeleted = 0;
             total_bytesMoved = 0;
+        }
+
+        public static void ZeroFolderCounters()
+        {
+            folder_bytesZipped = 0;
+            folder_CompressRatio = 0;
+            folder_bytesCompacted = 0;
+            folder_CompationRatio = 0;
+            folder_bytesArchived = 0;
+            folder_bytesDeleted = 0;
+            folder_bytesMoved = 0;
         }
 
         // ------------------------------------------------------------------------------------------------------------------------
@@ -782,13 +793,7 @@ namespace Total.WinFCU
                                 // ------------------------------------------------------------------------------------------------
                                 //   Now execute the requested action, clear per folder counters before proceeding
                                 // ------------------------------------------------------------------------------------------------
-                                folder_bytesZipped = 0;
-                                folder_CompressRatio = 0;
-                                folder_bytesCompacted = 0;
-                                folder_CompationRatio = 0;
-                                folder_bytesArchived = 0;
-                                folder_bytesDeleted = 0;
-                                folder_bytesMoved = 0;
+                                ZeroFolderCounters();
                                 switch (fileAttr.actionName.ToLower())
                                 {
                                     case "compact":   fcu.CompactFilesInList(fcuFiles); break;
