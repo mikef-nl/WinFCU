@@ -40,8 +40,10 @@ namespace Total.WinFCU
             foreach (ProductInstallation product in productInstallations)
             {
                 if (!product.IsInstalled) { continue; }
+                if (String.IsNullOrEmpty(product.ProductName)) { continue; }
                 validPackages.Add(product.LocalPackage);
                 if (product.ProductName.Contains("Click-to-Run")) { continue; }
+                total.Logger.Debug("Collecting installer info on: " + product.ProductName);
                 string localPackagePath = Path.GetDirectoryName(product.LocalPackage);
                 // Check for files in possible product sub folders
                 string subPackagePath   = Path.Combine(localPackagePath, product.ProductCode);
@@ -56,28 +58,39 @@ namespace Total.WinFCU
                 string sourceHashFile   = String.Format("SourceHash{0}", product.ProductCode);
                 if (File.Exists(sourceHashFile)) { validPackages.Add(Path.Combine(localPackagePath, sourceHashFile)); }
                 // Check for applied patches and add them to the list
+                total.Logger.Debug("Collecting patch info for: " + product.ProductName);
                 try
                 {
                     IEnumerable<PatchInstallation> patches = PatchInstallation.GetPatches(null, product.ProductCode, null, UserContexts.All, PatchStates.All);
-                    foreach (PatchInstallation patch in patches) { validPackages.Add(patch.LocalPackage); }
+                    // int patchCount = patches.Count<PatchInstallation>();
+                    foreach (PatchInstallation patch in patches) { if (!String.IsNullOrEmpty(patch.LocalPackage)) { validPackages.Add(patch.LocalPackage); } }
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     string errorMessage = String.Format("Error collecting patch information for '{0}' [{1}]\n", product.ProductName, product.ProductCode);
                     total.Logger.Error(errorMessage, ex);
-                    Environment.Exit(1);
+                    continue;
                 }
             }
 
             IEnumerable<PatchInstallation> productPatches = null;
             // remove supperseded patches from list
-            try { productPatches = PatchInstallation.GetPatches(null, null, null, UserContexts.All, PatchStates.Superseded); }
-            catch (Exception ex) { total.Logger.Error("Error collecting superseded patch information.\n", ex); Environment.Exit(1); }
-            foreach (PatchInstallation patch in productPatches) { if (validPackages.Contains(patch.LocalPackage)) { validPackages.Remove(patch.LocalPackage); } }
+            try
+            {
+                total.Logger.Debug("Collecting superseded patch info");
+                productPatches = PatchInstallation.GetPatches(null, null, null, UserContexts.All, PatchStates.Superseded);
+                foreach (PatchInstallation patch in productPatches) { if (validPackages.Contains(patch.LocalPackage)) { validPackages.Remove(patch.LocalPackage); } }
+            }
+            catch (Exception ex) { total.Logger.Error("Error collecting superseded patch information.\n", ex); }
 
             // remove obsolete patches from list
-            try { productPatches = PatchInstallation.GetPatches(null, null, null, UserContexts.All, PatchStates.Obsoleted); }
-            catch (Exception ex) { total.Logger.Error("Error collecting obsoleted patch information.\n", ex); Environment.Exit(1); }
-            foreach (PatchInstallation patch in productPatches) { if (validPackages.Contains(patch.LocalPackage)) { validPackages.Remove(patch.LocalPackage); } }
+            try
+            {
+                total.Logger.Debug("Collecting obsoleted patch info");
+                productPatches = PatchInstallation.GetPatches(null, null, null, UserContexts.All, PatchStates.Obsoleted);
+                foreach (PatchInstallation patch in productPatches) { if (validPackages.Contains(patch.LocalPackage)) { validPackages.Remove(patch.LocalPackage); } }
+            }
+            catch (Exception ex) { total.Logger.Error("Error collecting obsoleted patch information.\n", ex); }
 
             // Return the resulting list
             return validPackages;
