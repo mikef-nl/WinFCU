@@ -69,15 +69,14 @@ namespace Total.WinFCU
                 // InstallProperties and the Patch IDs from the Patches key
                 string productsSubKeyname = installerKeyName + "\\" + userSID + "\\Products";
                 string patchesSubKeyname  = installerKeyName + "\\" + userSID + "\\Patches";
-                total.Logger.Debug("GetRegisteredPackages - path: " + productsSubKeyname);
+                total.Logger.Debug("GetRegisteredPackages - Registry path: " + productsSubKeyname);
 
                 foreach (string ProductCode in (Registry.LocalMachine.OpenSubKey(productsSubKeyname)).GetSubKeyNames())
                 {
                     string productID = ConvertProductCodeToID(ProductCode);
                     string productsKeyName = productsSubKeyname + "\\" + ProductCode + "\\InstallProperties";
-                    string patchesKeyName = productsSubKeyname + "\\" + ProductCode + "\\Patches";
+                    string patchesKeyName  = productsSubKeyname + "\\" + ProductCode + "\\Patches";
                     string localPackage = null;
-                    total.Logger.Debug(String.Format("GetRegisteredPackages - ProductID: {0}", productID));
 
                     // Get the local package name and add it to the list of registered packages. Skip if null or empty
                     RegistryKey productRegistryKey = Registry.LocalMachine.OpenSubKey(productsKeyName);
@@ -86,12 +85,9 @@ namespace Total.WinFCU
                     {
                         localPackage = (string)productRegistryKey.GetValue("LocalPackage");
                         string displayName = (string)productRegistryKey.GetValue("DisplayName");
-                        if (!String.IsNullOrEmpty(localPackage))
-                        {
-                            total.Logger.Debug(String.Format("GetRegisteredPackages - Found: {0} ({1})", localPackage, displayName));
-                            registeredPackages.Add(localPackage);
-                        }
-
+                        if (String.IsNullOrEmpty(localPackage)) { continue; }
+                        total.Logger.Debug(String.Format("GetRegisteredPackages -  ProductID: {0} [{1}]", productID, displayName));
+                        registeredPackages.Add(localPackage);
                     }
                     catch (NullReferenceException) { continue; }
                     catch (Exception ex)
@@ -114,16 +110,16 @@ namespace Total.WinFCU
                         }
                     }
 
-                    // See whether there are applied patches to register (patchid's are stored as multi-string)
-                    total.Logger.Debug("GetRegisteredPatches - path: " + patchesKeyName);
+                    // See whether there are applied patches to register
                     RegistryKey patchRegistryKey = Registry.LocalMachine.OpenSubKey(patchesKeyName);
                     if (patchRegistryKey == null) { continue; }
-                    string[] allPatches = (string[])patchRegistryKey.GetValue("AllPatches");
-                    total.Logger.Debug(String.Format("GetRegisteredPatches - ProductID: {0}", productID));
 
+                    //  patchid's are stored as multi-string, use a dynamic variable to store it/them
+                    dynamic allPatches = patchRegistryKey.GetValue("AllPatches");
                     foreach (string patchID in allPatches)
                     {
                         if (String.IsNullOrEmpty(patchID)) { continue; }
+                        total.Logger.Debug(String.Format("GetRegisteredPatches  -    PatchID: {0}", patchID));
                         string patchSubKeyName = patchesSubKeyname + "\\" + patchID;
                         RegistryKey patchSubKey = Registry.LocalMachine.OpenSubKey(patchSubKeyName);
                         if (patchSubKey == null) { continue; }
