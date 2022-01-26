@@ -69,33 +69,42 @@ namespace Total.WinFCU
                 // InstallProperties and the Patch IDs from the Patches key
                 string productsSubKeyname = installerKeyName + "\\" + userSID + "\\Products";
                 string patchesSubKeyname  = installerKeyName + "\\" + userSID + "\\Patches";
+                total.Logger.Debug("GetRegisteredPackages - path: " + productsSubKeyname);
 
                 foreach (string ProductCode in (Registry.LocalMachine.OpenSubKey(productsSubKeyname)).GetSubKeyNames())
                 {
-                    string productCode = ConvertProductCodeToID(ProductCode);
+                    string productID = ConvertProductCodeToID(ProductCode);
                     string productsKeyName = productsSubKeyname + "\\" + ProductCode + "\\InstallProperties";
                     string patchesKeyName = productsSubKeyname + "\\" + ProductCode + "\\Patches";
                     string localPackage = null;
+                    total.Logger.Debug(String.Format("GetRegisteredPackages - ProductID: {0}", productID));
+
                     // Get the local package name and add it to the list of registered packages. Skip if null or empty
+                    RegistryKey productRegistryKey = Registry.LocalMachine.OpenSubKey(productsKeyName);
+                    if (productRegistryKey == null) { continue; }
                     try
                     {
-                        localPackage = (string)(Registry.LocalMachine.OpenSubKey(productsKeyName)).GetValue("LocalPackage");
-                        if (String.IsNullOrEmpty(localPackage)) { continue; }
+                        localPackage = (string)productRegistryKey.GetValue("LocalPackage");
+                        string displayName = (string)productRegistryKey.GetValue("DisplayName");
+                        if (!String.IsNullOrEmpty(localPackage))
+                        {
+                            total.Logger.Debug(String.Format("GetRegisteredPackages - Found: {0} ({1})", localPackage, displayName));
+                            registeredPackages.Add(localPackage);
+                        }
+
                     }
                     catch (NullReferenceException) { continue; }
                     catch (Exception ex)
                     {
-                        string errorMessage = String.Format("Error collecting prroduct information for '{0}'", ProductCode);
+                        string errorMessage = String.Format("Error collecting product information for '{0}'", ProductCode);
                         total.Logger.Error(errorMessage, ex);
                         return null;
                     }
 
-                    // Add the local package to the list of valid packages. Also add the possible SourceHash file of this package
-                    // and the possible files in the product subfolder
+                    // Add the possible SourceHash file of this package and the possible files in the product subfolder
                     string localPackagePath = Path.GetDirectoryName(localPackage);
-                    string subPackagePath = Path.Combine(localPackagePath, String.Format("{{{0}}}", productCode));
-                    string sourceHashFile = Path.Combine(localPackagePath, String.Format("SourceHash{{{0}}}", productCode));
-                    registeredPackages.Add(localPackage);
+                    string subPackagePath = Path.Combine(localPackagePath, String.Format("{{{0}}}", productID));
+                    string sourceHashFile = Path.Combine(localPackagePath, String.Format("SourceHash{{{0}}}", productID));
                     if (File.Exists(sourceHashFile)) { registeredPackages.Add(sourceHashFile); }
                     if (Directory.Exists(subPackagePath))
                     {
@@ -105,21 +114,28 @@ namespace Total.WinFCU
                         }
                     }
 
-                    // See whether there applied patches to register (is stored as multi-string)
-                    object allPatches = Registry.LocalMachine.OpenSubKey(patchesKeyName).GetValue("AllPatches");
-                    if (allPatches.ToString() == "") { continue; }
-                    foreach (string patchID in (string[]) allPatches)
+                    // See whether there are applied patches to register (patchid's are stored as multi-string)
+                    total.Logger.Debug("GetRegisteredPatches - path: " + patchesKeyName);
+                    RegistryKey patchRegistryKey = Registry.LocalMachine.OpenSubKey(patchesKeyName);
+                    if (patchRegistryKey == null) { continue; }
+                    string[] allPatches = (string[])patchRegistryKey.GetValue("AllPatches");
+                    total.Logger.Debug(String.Format("GetRegisteredPatches - ProductID: {0}", productID));
+
+                    foreach (string patchID in allPatches)
                     {
                         if (String.IsNullOrEmpty(patchID)) { continue; }
                         string patchSubKeyName = patchesSubKeyname + "\\" + patchID;
+                        RegistryKey patchSubKey = Registry.LocalMachine.OpenSubKey(patchSubKeyName);
+                        if (patchSubKey == null) { continue; }
                         try
                         {
-                            registeredPackages.Add((string)(Registry.LocalMachine.OpenSubKey(patchSubKeyName)).GetValue("LocalPackage"));
+                            localPackage = (string)patchSubKey.GetValue("LocalPackage");
+                            if (!String.IsNullOrEmpty(localPackage)) { registeredPackages.Add(localPackage); }
                         }
                         catch (NullReferenceException) { continue; }
                         catch (Exception ex)
                         {
-                            string errorMessage = String.Format("Error collecting patch information for '{0}'", ProductCode);
+                            string errorMessage = String.Format("Error collecting patch details for '{0}'", patchID);
                             total.Logger.Error(errorMessage, ex);
                             return null;
                         }
