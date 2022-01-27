@@ -58,24 +58,41 @@ namespace Total.WinFCU
         // So in case of whatever error -> quit and return null.
         public static List<string> GetRegisteredPackages()
         {
-            // Define the 'root' of the Installer section and the list of registered packages
-            const string installerKeyName   = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData";
+            // Define the 'root' of the Installer section in the HKLM hive
+            const string userdataKeyName   = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData";
+            // Create an empty list to store the registered packages
             List<string> registeredPackages = new List<string>();
 
-            // Step 1: Enumerate the (SID) keys in the installerRoot and create a product and patch subkey name
-            foreach (string userSID in (Registry.LocalMachine.OpenSubKey(installerKeyName)).GetSubKeyNames())
+            // Open the UserData registry key. Quit if none found (which should be impossible)
+            RegistryKey userdataRegistryKey = Registry.LocalMachine.OpenSubKey(userdataKeyName);
+            if (userdataRegistryKey == null)
             {
-                // Scan the productsSubKey hive and per key found get the LocalPackage name from the
-                // InstallProperties and the Patch IDs from the Patches key
-                string productsSubKeyname = installerKeyName + "\\" + userSID + "\\Products";
-                string patchesSubKeyname  = installerKeyName + "\\" + userSID + "\\Patches";
-                total.Logger.Debug("GetRegisteredPackages - Registry path: " + productsSubKeyname);
+                total.Logger.Error("GetRegisteredPackages - no UserData registry key found!! - " + userdataKeyName);
+                return null;
+            }
 
-                foreach (string ProductCode in (Registry.LocalMachine.OpenSubKey(productsSubKeyname)).GetSubKeyNames())
+            // Enumerate the (userSid) keynames in the UserData registry key
+            foreach (string userSid in userdataRegistryKey.GetSubKeyNames())
+            {
+                // Use the userSid found to create the next registry keyname and open the key
+                string userSidKeyName = userdataKeyName + "\\" + userSid;
+                RegistryKey userSidRegistryKey = Registry.LocalMachine.OpenSubKey(userSidKeyName);
+                if (userSidRegistryKey == null) { continue; }
+
+                // Use the userSidRegistryKey to find and open the Products subkey. Also prepare the Patches subkey name
+                string productsSubKeyName = userSidKeyName + "\\Products";
+                string patchesSubKeyName  = userSidKeyName + "\\Patches";
+
+                RegistryKey productsRegistryKey = Registry.LocalMachine.OpenSubKey(productsSubKeyName);
+                if (productsRegistryKey == null) { continue; }
+                total.Logger.Debug("GetRegisteredPackages - Registry path: " + productsSubKeyName);
+
+                // Get all product codes from the Products key and get the install and patch details
+                foreach (string ProductCode in productsRegistryKey.GetSubKeyNames())
                 {
                     string productID = ConvertProductCodeToID(ProductCode);
-                    string productsKeyName = productsSubKeyname + "\\" + ProductCode + "\\InstallProperties";
-                    string patchesKeyName  = productsSubKeyname + "\\" + ProductCode + "\\Patches";
+                    string productsKeyName = productsSubKeyName + "\\" + ProductCode + "\\InstallProperties";
+                    string patchesKeyName  = productsSubKeyName + "\\" + ProductCode + "\\Patches";
                     string localPackage = null;
 
                     // Get the local package name and add it to the list of registered packages. Skip if null or empty
@@ -120,7 +137,7 @@ namespace Total.WinFCU
                     {
                         if (String.IsNullOrEmpty(patchID)) { continue; }
                         total.Logger.Debug(String.Format("GetRegisteredPatches  -    PatchID: {0}", patchID));
-                        string patchSubKeyName = patchesSubKeyname + "\\" + patchID;
+                        string patchSubKeyName = patchesSubKeyName + "\\" + patchID;
                         RegistryKey patchSubKey = Registry.LocalMachine.OpenSubKey(patchSubKeyName);
                         if (patchSubKey == null) { continue; }
                         try
