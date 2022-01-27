@@ -100,6 +100,8 @@ Copyright (C) 2016-{1} Hans van Veen, Total Productions
 
  Informational:
    -Help (-?)                Show this help information
+   -Version                  Show the WinFCU version information
+   -Status                   Show the WinFCU detailed status info
 
    -Export [filename]        Exports the active configuration to the specified export file
                              (Default is .\WinFCU_Export.config)
@@ -108,8 +110,6 @@ Copyright (C) 2016-{1} Hans van Veen, Total Productions
    -Show License             Show the WinFCU open source software license info (ASF)
    -Show Schedule            Show the WinFCU run schedule(s) (when available)
    -Show Service             Show the WinFCUService details (when available)
-   -Show Status              Show the WinFCU detailed status info
-   -Show Version             Show the WinFCU version information
 
  Runtime:
    -[no]LogFile 'filename'   Send WinFCU logging to specified file

@@ -56,15 +56,18 @@ namespace Total.WinFCU
             cli.AddDefinition("{negatable,alias(verbose)}[bool]debug");
             cli.AddDefinition("{negatable,alias(whatif)}[bool]dryrun");
             cli.AddDefinition("{mandatory,notnullorempty}[string[]]schedule=#ALL#");
-            cli.AddDefinition("{notnullorempty,validateset(keywords|license|version|status|schedule|service|specials)}[string]show");
+            cli.AddDefinition("{notnullorempty,validateset(keywords|license|schedule|service|specials|status|version)}[string]show");
             cli.AddDefinition("{notnullorempty,validateset(install|uninstall|start|stop|restart|status)}[string]service");
             cli.AddDefinition("{alias(?)}[bool]help");
-            cli.AddRule("<disallow any2(export,show,help,logfile,service)>");
+            cli.AddDefinition("[bool]version");
+            cli.AddDefinition("[bool]status");
+            cli.AddRule("<disallow any2(export,show,help,logfile,service,version,status)>");
             cli.LoadDefinitions();
             // --------------------------------------------------------------------------------------------------------------------
             //   CLI Definitions are loaded. Some options do not require the full stack to be loaded. Lets deal with them now
             // --------------------------------------------------------------------------------------------------------------------
-            if (cli.IsPresent("Help")) { fcu.showHelp(); Environment.Exit(0); }
+            if (cli.IsPresent("Help"))    { fcu.showHelp();    Environment.Exit(0); }
+            if (cli.IsPresent("Version")) { fcu.showVersion(); Environment.Exit(0); }
             // --------------------------------------------------------------------------------------------------------------------
             //  Initialize the application and logging context
             // --------------------------------------------------------------------------------------------------------------------
@@ -79,17 +82,18 @@ namespace Total.WinFCU
             // --------------------------------------------------------------------------------------------------------------------
             //   Configuration has been loaded, if show is requested we can do so now and exit
             // --------------------------------------------------------------------------------------------------------------------
+            if (cli.IsPresent("Status")) { fcu.showStatus(); Environment.Exit(0); }
             if (cli.IsPresent("Show"))
             {
                 switch (cli.GetValue("Show").ToLower())
                 {
                     case "keywords": total.ShowReplacementKeywords("WinFCU"); break;
                     case "license":  fcu.showLicense(); break;
-                    case "version":  fcu.showVersion(); break;
-                    case "status":   fcu.showStatus(); break;
                     case "schedule": fcu.showSchedule(); break;
                     case "service":  fcu.showService(); break;
                     case "specials": fcu.showSpecialActions(); break;
+                    case "status":   fcu.showStatus(); break;
+                    case "version":  fcu.showVersion(); break;
                     default:         fcu.showHelp(); break;
                 }
                 Environment.Exit(0);

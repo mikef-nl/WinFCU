@@ -113,3 +113,4 @@ Bug fix and added functionality
 - When an error occurs in the WindowsInstaller productinfo collection, no products will be selected for deletion. No products at all!!
 - WindowsInstaller. Skip products without a name
 - Add `RecycleBins` special. This will clear all the recycle bins on all disks
+- `WinFCU -version` and `WinFCU -status` are added (`-show version|status` still work)
