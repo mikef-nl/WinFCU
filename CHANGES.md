@@ -114,3 +114,7 @@ Bug fix and added functionality
 - WindowsInstaller. Skip products without a name
 - Add `RecycleBins` special. This will clear all the recycle bins on all disks
 - `WinFCU -version` and `WinFCU -status` are added (`-show version|status` still work)
+
+## 2.5.2.0
+Bug fix
+- Fix longtime error with removing empty folders.

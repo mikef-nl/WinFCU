@@ -24,10 +24,10 @@ namespace Total.WinFCU
             foreach (string scanPath in pathList)
             {
                 try { allFolders = Directory.GetDirectories(scanPath, "*", recursiveScan); }
-                catch (PathTooLongException exPTL) { total.Logger.Debug(exPTL.Message + " - " + scanPath); return; }
-                catch (DirectoryNotFoundException exDNF) { total.Logger.Debug(exDNF.Message); return; }
-                catch (UnauthorizedAccessException exUAE) { total.Logger.Debug(exUAE.Message); return; }
-                catch (ArgumentException exAE) { total.Logger.Debug(exAE.Message.TrimEnd('.') + " \"" + scanPath + "\""); return; }
+                catch (PathTooLongException exPTL) { total.Logger.Debug(exPTL.Message + " - " + scanPath); continue; }
+                catch (DirectoryNotFoundException exDNF) { total.Logger.Debug(exDNF.Message); continue; }
+                catch (UnauthorizedAccessException exUAE) { total.Logger.Debug(exUAE.Message); continue; }
+                catch (ArgumentException exAE) { total.Logger.Debug(exAE.Message.TrimEnd('.') + " \"" + scanPath + "\""); continue; }
                 // --------------------------------------------------------------------------------------------------------------------
                 //   Process the list of available folders (sort the list and start with the longest path name)
                 // --------------------------------------------------------------------------------------------------------------------
@@ -40,8 +40,8 @@ namespace Total.WinFCU
                     try
                     {
                         dirInfo = new DirectoryInfo(pathName);
-                        long dirSize = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
-                        if (dirSize > 0) { continue; }
+                        int fileCount = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).ToArray().Length;
+                        if (fileCount > 0) { continue; }
                     }
                     catch (PathTooLongException exPTL) { total.Logger.Debug(exPTL.Message + " - " + pathName); continue; }
                     if (total.APP.Dryrun) { total.Logger.Debug(" [DRYRUN] - would remove folder: " + pathName); }
