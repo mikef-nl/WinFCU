@@ -115,6 +115,7 @@ Bug fix and added functionality
 - Add `RecycleBins` special. This will clear all the recycle bins on all disks
 - `WinFCU -version` and `WinFCU -status` are added (`-show version|status` still work)
 
-## 2.5.2.0
+## 2.5.2.x
 Bug fix
 - Fix longtime error with removing empty folders.
+- Fix breaking bug with archiving.

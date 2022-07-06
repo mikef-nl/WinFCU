@@ -249,12 +249,16 @@ namespace Total.WinFCU
                     // ------------------------------------------------------------------------------------------------------------
                     //  Process the files for the given target - target by target
                     // -------------------------------------------------------------------------------------------------------------
-                    List<total.ARC> archiveResult = total.CompressFiles(archiveList.ToArray(), archiveTarget, CompressionLevel.Optimal, 100, true, fnAttr.archivePath);
-                    foreach (var entry in archiveResult)
+                    try
                     {
-                        folder_bytesDeleted  += entry.orgFileSize;
-                        folder_bytesArchived += entry.cmpFileSize;
+                        List<total.ARC> archiveResult = total.CompressFiles(archiveList.ToArray(), archiveTarget, CompressionLevel.Optimal, 100, true, fnAttr.archivePath);
+                        foreach (var entry in archiveResult)
+                        {
+                            folder_bytesDeleted += entry.orgFileSize;
+                            folder_bytesArchived += entry.cmpFileSize;
+                        }
                     }
+                    catch (Exception ex) { total.Logger.Error("ArchiveFiles - " + ex.Message); continue; }
                 }
                 archiveList.Clear();
                 decimal folder_ZipRatio = folder_bytesDeleted > 0 ? Math.Round((decimal)100 * folder_bytesArchived / folder_bytesDeleted, 1) : -1;
